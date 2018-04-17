@@ -82,10 +82,8 @@ class RuleExecutionCommand extends Command
         $expressionLanguage = new ExpressionLanguage();
         $rule = 'admin(user) and withdrawal.getAmount() <= 1000';
 
-        $expressionLanguage->register('admin',function() {
-            return null;
-        },
-            function (array $options, $user) {
+        $expressionLanguage->register('admin',function() {},
+            function ($args, $user) {
             return $user instanceof User && $user->getRole() === 'ADMIN';
         });
 
